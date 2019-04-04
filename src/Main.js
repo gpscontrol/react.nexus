@@ -4,6 +4,9 @@ import MainMap from './Map';
 import SocketController from './SocketController';
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 import withStyles from '@material-ui/core/styles/withStyles';
+import Drawer from '@material-ui/core/Drawer';
+import TopAppBar from './AppBar';
+import TrackerList from './TrackersList';
 
 const styles = theme => ({
   root: {
@@ -51,12 +54,21 @@ class MainPage extends Component {
       return (
         <div className={classes.root}>
           <SocketController />
+           <TopAppBar history={this.props.history} />
           <div className={classes.content}>
+
             <div className={classes.mapContainer}>
               <ContainerDimensions>
                 <MainMap/>
               </ContainerDimensions>
             </div>
+
+            <Drawer
+              anchor={isWidthUp('sm', this.props.width) ? "right" : "bottom"}
+              variant="permanent"
+              classes={{ paper: classes.drawerPaper }}>
+              <TrackerList />
+            </Drawer>
           </div>
         </div>
       );

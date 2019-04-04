@@ -28,7 +28,7 @@ class MainMap extends Component {
       console.log('Azimuth',azimuth)
       const coordinates = [latitude, longitude];
       children.push(<Popup>{imei}</Popup>)
-      table.push(<Marker position={coordinates}>{children}</Marker>)
+      table.push(<Marker  key={i} position={coordinates}>{children}</Marker>)
     }
 
     const perc = this.props.perc || 50;
